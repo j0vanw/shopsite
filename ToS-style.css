@@ -1,0 +1,89 @@
+.ToS-title {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 25px;
+    border-bottom: 5px solid black;
+    padding: 0;
+    height: 100px;
+    font-family: "CustomFont1";
+}
+
+.ToS-body1 h4 {
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: "CustomFont1";
+}
+
+.ToS-body1 h2 {
+    font-family: "CustomFont1";
+}
+
+.ToS-body2 h4 {
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: "CustomFont1";
+}
+
+.ToS-body2 h2 {
+    font-family: "CustomFont1";
+}
+
+.ToS-body3 h4 {
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: "CustomFont1";
+}
+
+.ToS-body3 h2 {
+    font-family: "CustomFont1";
+}
+
+.ToS-body4 h4 {
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: "CustomFont1";
+}
+
+.ToS-body4 h2 {
+    font-family: "CustomFont1";
+}
+
+.ToS-body5 h4 {
+    font-size: 18px;
+    margin-left: 20px;
+    font-family: "CustomFont1";
+}
+
+.ToS-body5 h2 {
+    font-family: "CustomFont1";
+}
+
+.end-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    font-family: "CustomFont1";
+    margin: 40px 0
+}
+
+.end-divider::before,
+.end-divider::after {
+    content:'';
+    flex: 1;
+    height: 2px;
+    background: black;
+}
+
+.end-divider::before {
+    margin-right: 5px;
+}
+
+.end-divider::after {
+    margin-left: 5px;
+}
+
+.ToS-end2 {
+    font-family: "CustomFont1"
+}
