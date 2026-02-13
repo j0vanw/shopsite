@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "CustomFont1";
+    font-family: Arial, sans-serif;
 }
 
 /* Body Styling */
@@ -41,7 +41,7 @@ nav ul li a {
 
 /* Main Content */
 main {
-    max-width: 1000px;
+    max-width: 800px;
     margin: 20px auto;
     background: white;
     padding: 20px;
@@ -151,8 +151,12 @@ footer {
     font-size: 0.9rem;
   }
 
-  .hometext {
-  border: #333 solid;
-  border-radius: 20px;
-  padding: 15px;
-}
+  .product-card button {
+    color: black;
+  }
+
+  .product-card {
+    border: #333 solid;
+    border-radius: 20px;
+    padding: 15px;
+  }

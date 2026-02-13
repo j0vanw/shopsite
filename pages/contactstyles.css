@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: "CustomFont1";
 }
 
 /* Body Styling */
@@ -149,4 +149,19 @@ footer {
   #user-email {
     color: #007BFF;
     font-size: 0.9rem;
+  }
+
+  .contact {
+    list-style: none;    
+  }
+
+  .contact a {
+    text-decoration: none;
+    font-style: none;
+  }
+
+  .content {
+    border: #333 solid;
+    border-radius: 20px;
+    padding: 15px;
   }
