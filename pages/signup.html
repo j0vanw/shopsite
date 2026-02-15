@@ -3,22 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <title>Sign Up</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="signup-style.css">
 </head>
 <body>
-
-  <h2>Sign Up</h2>
-  <input type="text" id="name" placeholder="Your Name" required><br><br>
-  <input type="text" id="displayname" placeholder="Display Name" required><br><br>
-  <input type="email" id="email" placeholder="Email" required><br><br>
-  <input type="password" id="password" placeholder="Password" required><br><br>
-  <button id="signup-btn">Sign Up</button><br>
-  <input type="checkbox" id="ToS+PP" name="ToS+PP" required><label for="ToS+PP">
-    I have read and accepted the <a href="ToS.html">Terms of Service</a> and <a href="PP.html">Privacy Policy</a>.
+  <div class="signup-card">
+    <div class="back-button">
+      <a href="javascript:history.back()" class="back-button">&#8592;</a>
+    </div>
+    <h2>Sign Up</h2>
+    <input type="text" id="name" placeholder="Your Name" required><br>
+    <input type="text" id="displayname" placeholder="Display Name" required><br>
+    <input type="email" id="email" placeholder="Email" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <div class="ToS">
+    <input type="checkbox" id="ToS+PP" name="ToS+PP" required><label for="ToS+PP">
+      I have read and accepted the <a href="/content/ToS.html">Terms of Service</a> and <a href="/content/PP.html">Privacy Policy</a>.
   </label>
-  <p>Already have an account? <a href="login.html">Log In</a></p>
-  
-<script src="https://cdn.auth0.com/js/auth0-spa-js/2.3/auth0-spa-js.production.js"></script>
-<script src="auth0.js"></script>
+  </div>
+  <button id="signup-btn">Sign Up</button>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", async () => {
+        await initAuth0();
+
+        const checkbox = document.getElementById("ToS");
+        const signupbtn = document.getElementById("signup-btn");
+
+        signupbtn.disabled = !checkbox.checked;
+
+        checkbox.addEventListener("change",() => {
+            signupbtn.disabled = !checkbox.checked;
+        });
+
+        signupbtn.addEventListener("click",async () => {
+          if(!signupbtn.disabled) {
+            try {
+              await signup();
+            }catch (err) {
+              console.error("Signup failed", err);
+            }
+          }
+        });
+      });
+    </script>
+    <p>Already have an account? <a href="login.html">Log In</a></p>
+  </div>
 </body>
 </html>
