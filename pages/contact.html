@@ -18,21 +18,53 @@
             </ul>
         </nav>
     </header>
-
+    <div class="hamburg-btn">
+        <li><button onclick="toggleHamburg()">&#9776;</button></li>
+    </div>
     <main>
         <section class="content">
             <h2>Contact</h2>
-            <p>If you have any questions, feel free to reach out to me, my name is Jovan:</p>
-            <ul class="contact">
-                <li><a href="mailto:j0vanwwebsite@gmail.com" target="_blank">Email</a>  <a href="https://www.instagram.com/j0vanw09?igsh=MTk0MjRtdGN1N2VwaQ==">Instagram</a>    <a href="https://wa.me/+6598495755">Whatsapp</a></li>
-
-            </ul>
+            <p>If you have any questions, feel free to reach out to me, my name is Jovan:<br><li><a href="mailto:j0vanwwebsite@gmail.com" target="_blank">Email</a>  <a href="https://www.instagram.com/j0vanw09?igsh=MTk0MjRtdGN1N2VwaQ==">Instagram</a>    <a href="https://wa.me/+6598495755">Whatsapp</a></li></p>
         </section>
     </main>
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="/pages/auth/login.html">Log In</a></li>
+            <li><a href="/pages/auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
     <footer>
         <p>&copy; 2026 j0vanwshopsite&trade;.  All rights reserved.</p>
     </footer>
+<script>
+        function toggleHamburg() {
+            const hamburgEl= document.getElementById("hamburg-menu");
+            hamburgEl.classList.toggle("hamburg-open");
+            console.log("Hamburger Toggled", hamburgEl.classList);
+        }
 
+        document.addEventListener("click", function (e) {
+            const hamburgMenu = document.getElementById("hamburg-menu")
+            const hamburgButton = document.querySelector(".hamburg-btn button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+        });
+    </script>
     <script type="module">
         import { auth, firebaseFunctions } from "./firebase-config.js";
         const { signOut, onAuthStateChange } = firebaseFunctions;
