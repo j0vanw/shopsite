@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
-    <link rel="stylesheet" href="aboutstyles.css">
+    <link rel="stylesheet" href="about-styles.css">
     <link rel="stylesheet" href="/font.css">
 </head>
 <body>
@@ -13,21 +13,59 @@
         <nav class="main-nav">
             <ul class="nav-center">
                 <li><a href="/home.html">Home</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="shop.html">Shop</a></li>
             </ul>
         </nav>
     </header>
-
+    <div class="hamburg-btn">
+        <li><button onclick="toggleHamburg()">&#9776;</button></li>
+    </div>
     <main> 
         <section class="abttxt">
             <h2> About</h2>
             <p>This website is created by me (Jovan) using VS Code. I am still learning how to properly code on this platform, so the things here would not look as nice as other websites.</p>
         </section>
     </main>
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="auth/login.html">Log In</a></li>
+            <li><a href="auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
     <footer>
         <p>&copy; 2026 j0vanwshopsite&trade;. All rights reserved.</p>
-    </footer>
+    </footer>   
 
+    <script>
+        function toggleHamburg() {
+            const hamburgEl= document.getElementById("hamburg-menu")
+            hamburgEl.classList.toggle("hamburg-open")
+            console.log("Hamburger Toggled", hamburgEl.classList)            
+        }
+
+        document.addEventListener("click", function (e) {
+            const hamburgMenu = document.getElementById("hamburg-menu")
+            const hamburgButton = document.querySelector(".hamburg-btn button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+        });
+    </script>
     <script type="module">
         import { auth, firebaseFunctions } from "./firebase-config.js";
         const { signOut, onAuthStateChange } = firebaseFunctions;
