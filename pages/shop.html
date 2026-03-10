@@ -75,35 +75,55 @@
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <ul class="nav-right">
-                <li><button onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button></li>
-            </ul>
         </nav>
     </header>
-
+    <div class="cart&hamburg">
+        <ul class="nav-right">
+            <div class="cart-button">
+            <li><button onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button></li>
+            </div>
+            <div class="hamburg-button">
+            <li><button onclick="toggleHamburg()">&#9776;</button></li>
+            </div>
+        </ul>
+    </div>
     <main> 
         <section class="products-grid">
             <div class="product-card" data-id="1" data-name="j0vanw Tee" data-price="30">
-                <img src="https://via.placeholder.com/200x200.png?text=j0vanw+Tee" alt="Tee" />
+                <img src="/content/img/black_shirt.jpg">
                 <h3>j0vanw Tee</h3>
                 <p>$30</p>
                 <button onclick="addToCart(1)">Add to Cart</button>
             </div>
             <div class="product-card" data-id="2" data-name="j0vanw Hoodie" data-price="$50">
-                <img src="https://via.placeholder.com/200x200.png?text=j0vanw+Hoodie" alt="Hoodie" />
+                <img src="/content/img/black_hoodie.jpg" alt="Hoodie">
                 <h3>j0vanw Hoodie</h3>
                 <p>$50</p>
                 <button onclick="addToCart(2)">Add to Cart</button>
             </div>
             <div class="product-card" data-id="3" data-name="j0vanw Cap" data-price="20">   
-                <img src="https://via.placeholder.com/200x200.png?text=j0vanw+Cap" alt="Cap" />    
+                <img src="/content/img/black_cap.jpg" alt="Cap">    
                 <h3>j0vanw Cap</h3>    
                 <p>$20</p>    
                 <button onclick="addToCart(3)">Add to Cart</button>    
             </div>
         </section>
     </main>
-
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="auth/login.html">Log In</a></li>
+            <li><a href="auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
     <div class="cart" id="cart">
         <div class="cart-header">
         <h2>Your Cart</h2>
@@ -117,7 +137,25 @@
             <button onclick="checkoutPayNow()">Pay with PayNow</button>
         </div>
     </div>
-    
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 j0vanwshopsite&trade;. All rights reserved.</p>
+    </footer>
     <script>
         const cart =[];
         const products = {
@@ -146,7 +184,7 @@
                 total += item.price * item.qty;
                 count +=    item.qty;
                 const div = document.createElement("div");
-                div.classname = "cart-item";
+                div.className = "cart-item";
                 div.innertext = `${item.name} x ${item.qty} - $${item.price * item.qty}`;
                 cartItems.appendChild(div);
             });
@@ -172,6 +210,25 @@
             cart.classList.remove("cart-open");
         }
     });
+
+        function toggleHamburg() {
+            const hamburgEl= document.getElementById("hamburg-menu")
+            hamburgEl.classList.toggle("hamburg-open")
+            console.log("Hamburger Toggled", hamburgEl.classList)            
+        }
+
+        document.addEventListener("click", function (e) {
+            const hamburgMenu = document.getElementById("hamburg-menu")
+            const hamburgButton = document.querySelector(".hamburg-button button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+        });
 
         function checkoutStripe() {
             alert("Stripe checkout will be implemented next.")

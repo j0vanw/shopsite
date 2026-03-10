@@ -39,15 +39,6 @@ nav ul li a {
     font-weight: bold;
 }
 
-/* Main Content */
-main {
-    max-width: 800px;
-    margin: 20px auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
 /* Footer */
 footer {
     text-align: center;
@@ -65,62 +56,92 @@ footer {
         padding: 10px;
     }
 
-    /* Make navigation stack vertically */
-    nav ul {
-        flex-direction: column;
-        text-align: center;
-        gap: 5px;
+    .main-nav{
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .main-nav a {
+        display: none;
     }
 
-    /* Reduce main content width */
-    main {
-        max-width: 100%;
-        padding: 15px;
+    .main-nav ul li {
+        padding-top: 0;
     }
 
-    /* Adjust footer padding */
+    .nav-center {
+        display: none;
+    }
+
     footer {
-        padding: 15px;
+        font-size: 13px;
     }
 }
 
 /* Tablet Screens (max-width: 900px) */
-@media (max-width: 900px) {
+@media (min-width: 800px) {
+
+    .main-nav {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 20px;
+        background-color: #f4f4f4;
+    }
+  
+    .nav-center {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .hamburg-button {
+        display: none;
+    }
     main {
-        max-width: 90%;
+        max-width: 800px;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+    }
+    footer {
+        margin-top: auto;
     }
 }
 
-/* Layout the main nav horizontally */
-.main-nav {
-    position: relative;
-    display: flex;
-    justify-content: center; /* Center the main links */
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f4f4f4;
-  }
-  
-  /* Center nav */
-  .nav-center {
-    display: flex;
-    gap: 1.5rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Right-side auth nav */
   .nav-right {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
     display: flex;
-    gap: 1rem;
+    align-items: end;
+    justify-content: end;
+    gap: 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-right li {
     list-style: none;
-    margin: 0;
-    padding: 0;
+  }
+
+  .hamburg-button button {
+    background: none;
+    border: none;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .cart-button button {
+    background: none;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    color: #333;
   }
   
   /* Style links and buttons */
@@ -180,7 +201,113 @@ footer {
     font-size: 20px;
     color: #333;
     cursor: pointer;
-    padding: 5px 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 2px;
+    border-radius: 10px;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+
+.hamburg-btn {
+    display: flex;
+    justify-content: end;
+}
+
+.hamburg-btn li {
+    list-style: none;
+}
+
+.hamburg-btn button {
+    border: none;
+    background: none;
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 10px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.hamburg-menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    border-left: 2px solid #ccc;
+    padding: 1rem;
+    display: none;
+    flex-direction: column;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    z-index: 1001;
+}
+.hamburg-open {
+    display: flex;
+}
+
+.hamburg-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+.hamburg-header h2 {
+    padding: 0px;
+    font-size: 25px;
+}
+
+.hamburg-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 25px;
+    font-weight: bold;
+    gap: 10px;
+    margin-top: 20px;
+    max-height: 90%;
+}
+
+.hamburg-items li {
+    list-style: none;
+}
+
+.hamburg-items a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hamburg-auth {
+    margin-top: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.hamburg-auth li {
+    list-style: none;
+}
+
+.hamburg-auth a {
+    text-decoration: none;
+    color: #333;
+}
+
+  .hamburg-close {
+    background: none;
+    border: 2px solid #333;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 2px;
     border-radius: 10px;
     transition: background 0.2s ease, transform 0.1s ease;
   }
