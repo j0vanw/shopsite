@@ -8,35 +8,9 @@
 
 /* Body Styling */
 body {
+    background-color: #2b2b2b;
     color: #333;
     line-height: 1.6;
-}
-
-/* Header */
-header {
-    background: rgba(255, 255, 255);
-    color: black;
-    padding: 5px;
-    text-align: center;
-}
-
-/* Navigation Menu - Flexbox for alignment */
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    padding: 10px 0;
-}
-
-nav ul li {
-    display: inline;
-}
-
-nav ul li a {
-    color: black;
-    text-decoration: none;
-    font-weight: bold;
 }
 
 /* Footer */
@@ -56,22 +30,7 @@ footer {
         padding: 10px;
     }
 
-    .main-nav{
-        display: flex;
-        position: relative;
-        justify-content: center;
-        align-items: center;
-        color: white;
-    }
-    .main-nav a {
-        display: none;
-    }
-
-    .main-nav ul li {
-        padding-top: 0;
-    }
-
-    .nav-center {
+    .top {
         display: none;
     }
 
@@ -82,33 +41,66 @@ footer {
 
 /* Tablet Screens (max-width: 900px) */
 @media (min-width: 800px) {
-
-    .main-nav {
-        position: relative;
+    .top {
+        background-color: #262626;
+        color: deepskyblue;
         display: flex;
-        justify-content: center;
+        flex-direction: row;
         align-items: center;
-        padding: 10px 20px;
-        background-color: #f4f4f4;
+        justify-content: space-between;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        box-shadow: 0 1px 20px deepskyblue;
     }
-  
-    .nav-center {
+    
+    .center {
         display: flex;
-        gap: 1.5rem;
+        gap: 10px;
+    }
+    .center li {
         list-style: none;
-        margin: 0;
-        padding: 0;
+    } 
+    .center a {
+        display: inline-block;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        padding-right: 15px;
+        text-decoration: none;
+        color: white;
+        transition: all 0.5s;
+    }
+    .center a:hover {
+        color: deepskyblue;
+        border-bottom: 2px solid deepskyblue
+    }
+    .active a {
+        color: deepskyblue;
+        border-bottom: 2px solid deepskyblue;
+    }
+    .end {
+        display: flex;
+        gap: 15px;
+    }
+    .end li {
+        list-style: none;
+    }
+    .end a {
+        text-decoration: none;
+        color: white;
     }
 
-    .hamburg-button {
-        display: none;
-    }
     main {
         max-width: 800px;
         margin: 20px auto;
         background: white;
         padding: 20px;
         border-radius: 10px;
+    }
+    .hamburg-button button {
+        display: none;
     }
     footer {
         margin-top: auto;
@@ -133,7 +125,7 @@ footer {
     border: none;
     font-size: 22px;
     font-weight: bold;
-    color: #333;
+    color: white;
   }
 
   .cart-button button {
@@ -141,23 +133,10 @@ footer {
     border: none;
     font-size: 15px;
     font-weight: bold;
-    color: #333;
+    color: white;
   }
   
-  /* Style links and buttons */
-  .main-nav a, .main-nav button {
-    text-decoration: none;
-    font-size: 1rem;
-    color: #333;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .main-nav a:hover,
-  .main-nav button:hover {
-    color: rgb(0, 255, 255);
-  }
+
 
   header {
     position: sticky;
@@ -167,10 +146,6 @@ footer {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   }
   
-  #user-email {
-    color: #007BFF;
-    font-size: 0.9rem;
-  }
 
   .product-card button {
     color: black;
@@ -197,9 +172,9 @@ footer {
 
   .cart-close {
     background: none;
-    border: 2px solid #333;
+    border: 2px solid white;
     font-size: 20px;
-    color: #333;
+    color: white;
     cursor: pointer;
     padding-left: 10px;
     padding-right: 10px;
@@ -225,7 +200,6 @@ footer {
     font-weight: bold;
     margin-right: 10px;
     margin-top: 10px;
-    color: #333;
 }
 
 .hamburg-menu {
@@ -234,12 +208,11 @@ footer {
     top: 0;
     width: 300px;
     height: 100%;
-    background: #fff;
-    border-left: 2px solid #ccc;
+    background: #262626;
     padding: 1rem;
     display: none;
     flex-direction: column;
-    box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+    box-shadow: -1px 0 10px deepskyblue;
     z-index: 1001;
 }
 .hamburg-open {
@@ -251,7 +224,10 @@ footer {
     justify-content: space-between;
     align-items: center;
     padding: 0;
+    color: white;
 }
+
+
 
 .hamburg-header h2 {
     padding: 0px;
@@ -276,7 +252,7 @@ footer {
 
 .hamburg-items a {
     text-decoration: none;
-    color: #333;
+    color: white;
 }
 
 .hamburg-auth {
@@ -295,14 +271,14 @@ footer {
 
 .hamburg-auth a {
     text-decoration: none;
-    color: #333;
+    color: white;
 }
 
   .hamburg-close {
     background: none;
-    border: 2px solid #333;
+    border: 2px solid white;
     font-size: 20px;
-    color: #333;
+    color: white;
     cursor: pointer;
     padding-left: 10px;
     padding-right: 10px;

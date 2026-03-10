@@ -31,22 +31,26 @@
             top: 0;
             width: 300px;
             height: 100%;
-            background: #fff;
-            border-left: 2px solid #ccc;
+            background: #262626;
             padding: 1rem;
             display: none;
             flex-direction: column;
-            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+            box-shadow: -2px 0 8px deepskyblue;
             z-index: 1001;
         }
         .cart-open {
             display: flex;
         }
+        .cart-header {
+            color: white;
+        }
         .cart-item {
             border-bottom: 1px solid #ddd;
             padding: 0.5rem 0;
+            color: white;
         }
         .cart-total {
+            color: white;
             margin-top: auto;
             font-weight: bold;
         }
@@ -61,22 +65,29 @@
             cursor: pointer;
         }
         .checkout-btns button:hover {
-            background: #00ffff;
+            background: white;
+            color: black;
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <h1>Clothing Shop</h1>
-        <nav class="main-nav">
-            <ul class="nav-center">
-                <li><a href="/home.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="top">
+        <div class="front">
+            <h3>j0vanwshopsite&trade;</h3>
+        </div>
+        <div class="center">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+            <li class="active"><a href="/pages/shop.html">Shop</a></li>
+        </div>
+        <div class="end">
+            <li><a href="/pages/auth/login.html">Log In</a></li>
+            <li><a href="/pages/auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
+</header>
     <div class="cart&hamburg">
         <ul class="nav-right">
             <div class="cart-button">
