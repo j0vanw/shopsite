@@ -3,49 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>j0vanw's website</title>
-    <link rel="stylesheet" href="styles.css" />
+    <title>j0vanwshopsite&trade;</title>
+    <link rel="stylesheet" href="home-styles.css" />
     <link rel="stylesheet" href="indexstyles.css" />
     <link rel="stylesheet" href="font.css" />
 </head>
 <body>
 
     <header>
-        <h1>Welcome to My Website.</h1>
-       
+        <h1>j0vanwshopsite&trade;</h1>
         <nav class="main-nav">
             <ul class="nav-center">
-                <li><a href="home.html">Home</a></li>
                 <li><a href="/pages/about.html">About</a></li>
                 <li><a href="/pages/contact.html">Contact</a></li>
                 <li><a href="/pages/shop.html">Shop</a></li>
-            </ul>
-
             <ul class="nav-right">
-                <li><a href="/pages/login.html" id="login-link">Log In</a></li>
-                <li><a href="/pages/signup.html" id="signup-link">Sign Up</a></li>
+                <li><a href="/pages/auth/login.html" id="login-link">Log In</a></li>
+                <li><a href="/pages/auth/signup.html" id="signup-link">Sign Up</a></li>
                 <li> <button id="logout-btn" onclick="logout()" style="display: none;">Log Out</button> </li>
                 <li><span id="user-email" style="display: none; font-weight: bold;"></span></li>
             </ul>
         </nav>
     </header>
-
+    <div class="hamburg-btn">
+        <li><button onclick="toggleHamburg()">&#9776;</button></li>
+    </div>
     <main>
         <section class="hometext">
-            <h2>I will use this website to test on how to create a website using VS Code</h2>
-            <p><h4>Please try and click the home, about and contact hyperlinks to test this website</h4></p>
-            <img src="/#" alt="bmw picture">
+            <h2>Just a test shop site</h2>
+            <p>Test the website and its functions</p>
+            <img src="content/img/porsche_black_pfp.jpg" alt="porsche_black_pfp">
 
             
         </section>
         
     </main>
-
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+            <li><a href="/pages/shop.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="/pages/auth/login.html">Log In</a></li>
+            <li><a href="/pages/auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
     <footer>
         <p>&copy; 2026 j0vanwshopsite&trade;. All rights reserved.</p>
-    </footer>
+    </footer>   
     
+    <script>
+        function toggleHamburg() {
+            const hamburgEl= document.getElementById("hamburg-menu");
+            hamburgEl.classList.toggle("hamburg-open");
+            console.log("Hamburger Toggled", hamburgEl.classList);
+        }
 
+        document.addEventListener("click", function (e) {
+            const hamburgMenu = document.getElementById("hamburg-menu")
+            const hamburgButton = document.querySelector(".hamburg-btn button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+        });
+    </script>
 <script type="module">
     import { auth, signOut, onAuthStateChanged } from "./src/firebase.js";
     const { signOut, onAuthStateChanged } = firebaseFunctions;
