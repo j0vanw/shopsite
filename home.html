@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>j0vanwshopsite&trade;</title>
     <link rel="stylesheet" href="home-styles.css" />
-    <link rel="stylesheet" href="indexstyles.css" />
     <link rel="stylesheet" href="font.css" />
 </head>
 <body>
-
-    <header>
-        <h1>j0vanwshopsite&trade;</h1>
-        <nav class="main-nav">
-            <ul class="nav-center">
-                <li><a href="/pages/about.html">About</a></li>
-                <li><a href="/pages/contact.html">Contact</a></li>
-                <li><a href="/pages/shop.html">Shop</a></li>
-            <ul class="nav-right">
-                <li><a href="/pages/auth/login.html" id="login-link">Log In</a></li>
-                <li><a href="/pages/auth/signup.html" id="signup-link">Sign Up</a></li>
-                <li> <button id="logout-btn" onclick="logout()" style="display: none;">Log Out</button> </li>
-                <li><span id="user-email" style="display: none; font-weight: bold;"></span></li>
-            </ul>
-        </nav>
-    </header>
+<header>
+    <div class="top">
+        <div class="front">
+            <h3>j0vanwshopsite&trade;</h3>
+        </div>
+        <div class="center">
+            <li class="active"><a href="home.html">Home</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+            <li><a href="/pages/shop.html">Shop</a></li>
+        </div>
+        <div class="end">
+            <li><a href="/pages/auth/login.html">Log In</a></li>
+            <li><a href="/pages/auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
+</header>
     <div class="hamburg-btn">
         <li><button onclick="toggleHamburg()">&#9776;</button></li>
     </div>
