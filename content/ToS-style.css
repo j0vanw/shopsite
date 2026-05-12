@@ -1,9 +1,14 @@
+body {
+    background: #2b2b2b;
+    color: white;
+}
+
 .ToS-title {
     display: flex;
     flex-direction: column;
     text-align: center;
     font-size: 25px;
-    border-bottom: 5px solid black;
+    border-bottom: 5px solid rgba(0, 255, 255, 0.7);
     padding: 0;
     height: 100px;
     font-family: "CustomFont1";
@@ -73,7 +78,7 @@
     content:'';
     flex: 1;
     height: 2px;
-    background: black;
+    background: rgba(0, 255, 255, 0.9);
 }
 
 .end-divider::before {
@@ -85,5 +90,12 @@
 }
 
 .ToS-end2 {
-    font-family: "CustomFont1"
+    font-family: "CustomFont1";
+}
+.exit {
+    font-family: "CustomFont1";
+}
+.exit a {
+    text-decoration: none;
+    color: lightblue;
 }
