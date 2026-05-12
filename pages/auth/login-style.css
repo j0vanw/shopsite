@@ -3,14 +3,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+    background-color: #262626;
+}
 @media (max-width: 600px) {
     input {
         display: block;
         width: 90%;
         padding: 10px 0;
-        border: 2px solid black;
-        border-radius: 20px;
-        background-color: white;
+        background-color: #2b2b2b;
         color: black;
         text-align: center;
         font-weight: bold;
@@ -24,15 +25,13 @@
         display: block;
         width: 70%;
         padding: 10px 0;
-        border: 2px solid black;
-        border-radius: 20px;
-        background-color: white;
+        background-color: #2b2b2b;
         color: black;
         text-align: center;
         font-weight: bold;
         font-family: "CustomFont2";
         font-size: 22px;
-}
+    }
 }
 h2 {
     font-family: "CustomFont2";
@@ -43,7 +42,7 @@ p {
 }
 .login-card {
     padding: 20px;
-    border: 3px solid black;
+    border: 3px solid white;
     border-radius: 50px;
     width: 500px;
     max-width: 90%;
@@ -52,14 +51,14 @@ p {
     justify-content: center;
     align-items: center;
     margin: 150px auto;
-    background-color: white;
-    color: #333
+    background-color: #2b2b2b;
+    color: white
 }
 
 .back-button {
     align-self: flex-start;
     text-decoration: none;;
-    color: black;
+    color: white;
     font-size: 20px;
     font-weight: bold;
     transform: scale(2.0);
@@ -74,6 +73,10 @@ p {
     align-items: center;
     gap: 8px;
     margin-bottom: 10px;
+}
+
+.ToS a {
+    color: lightblue
 }
 
 .ToS input[type="checkbox"] {
@@ -109,4 +112,11 @@ button {
 
 button:not(:disabled):hover {
     border: 3px solid black;
+}
+#loginText,
+#loginPassword {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid white
 }
