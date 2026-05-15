@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://js.stripe.com/v3/"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width-device-width, initial-scale=1.0"/>
+    <title>shop | j0vanw</title>
+    <link rel="stylesheet" href="shopstyles.css" />
+    <link rel="stylesheet" href="/font.css">
+    <style>
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minimax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem;
+        }
+        .products-card {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .cart {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 300px;
+            height: 100%;
+            background: #262626;
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            box-shadow: -2px 0 8px deepskyblue;
+            z-index: 1001;
+        }
+        .cart-open {
+            display: flex;
+        }
+        .cart-header {
+            color: white;
+        }
+        .cart-item {
+            border-bottom: 1px solid #ddd;
+            padding: 0.5rem 0;
+            color: white;
+        }
+        .cart-total {
+            color: white;
+            margin-top: auto;
+            font-weight: bold;
+        }
+        .checkout-btns button {
+            margin-top: 1rem;
+            width: 100%;
+            padding: 0.6rem;
+            border: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .checkout-btns button:hover {
+            background: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="top">
+        <div class="front">
+            <h3>j0vanwshopsite&trade;</h3>
+        </div>
+        <div class="center">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+            <li class="active"><a href="/pages/shop.html">Shop</a></li>
+        </div>
+        <div class="end">
+            <li><a href="/pages/auth/login.html">Log In</a></li>
+            <li><a href="/pages/auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
+</header>
+    <div class="cart&hamburg">
+        <ul class="nav-right">
+            <div class="cart-button">
+            <li><button onclick="toggleCart()">🛒 Cart (<span id="cart-count">0</span>)</button></li>
+            </div>
+            <div class="hamburg-button">
+            <li><button onclick="toggleHamburg()">&#9776;</button></li>
+            </div>
+        </ul>
+    </div>
+    <main> 
+        <section class="products-grid">
+            <div class="product-card" data-id="1" data-name="j0vanw Tee" data-price="30">
+                <img src="/content/img/black_shirt.jpg">
+                <h3>j0vanw Tee</h3>
+                <p>$30</p>
+                <button onclick="addToCart(1)">Add to Cart</button>
+            </div>
+            <div class="product-card" data-id="2" data-name="j0vanw Hoodie" data-price="$50">
+                <img src="/content/img/black_hoodie.jpg" alt="Hoodie">
+                <h3>j0vanw Hoodie</h3>
+                <p>$50</p>
+                <button onclick="addToCart(2)">Add to Cart</button>
+            </div>
+            <div class="product-card" data-id="3" data-name="j0vanw Cap" data-price="20">   
+                <img src="/content/img/black_cap.jpg" alt="Cap">    
+                <h3>j0vanw Cap</h3>    
+                <p>$20</p>    
+                <button onclick="addToCart(3)">Add to Cart</button>    
+            </div>
+        </section>
+    </main>
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="shop.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="auth/login.html">Log In</a></li>
+            <li><a href="auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
+    <div class="cart" id="cart">
+        <div class="cart-header">
+        <h2>Your Cart</h2>
+        <button class="cart-close" onclick="toggleCart()">✖</button>
+        </div>
+        <div id="cart-items"></div>
+        <div class="cart-total">Total: $<span id="cart-total">0</span></div>
+        <div class="checkout-btns">
+            <button onclick="checkoutStripe()">Pay with Stripe</button>
+            <button onclick="checkoutPayPal()">Pay with PayPal</button>
+            <button onclick="checkoutPayNow()">Pay with PayNow</button>
+        </div>
+    </div>
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/home.html">Home</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="about.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 j0vanwshopsite&trade;. All rights reserved.</p>
+    </footer>
+    <script>
+        const cart =[];
+        const products = {
+            1: {id: 1, name: "j0vanw Tee", price: 30},
+            2: {id: 2, name: "j0vanw Hoodie", price: 50},
+            3: {id: 3, name: "j0vanw Cap", price: 20},
+        };
+
+        function addToCart(id) {
+            const existing =cart.find(item => item.id === id);
+            if (existing) {
+                existing.qty++;
+            } else {
+                cart.push({ ...products[id], qty: 1});
+            }
+            updateCart();
+            }
+            function updateCart() {;
+            const cartItems = document.getElementById("cart-items")
+            const cartTotal = document.getElementById("cart-total")
+            const cartCount = document.getElementById("cart-count")
+            cartItems.innerHTML = "";
+            let total = 0;
+            let count = 0;
+            cart.forEach(item => {
+                total += item.price * item.qty;
+                count +=    item.qty;
+                const div = document.createElement("div");
+                div.className = "cart-item";
+                div.innertext = `${item.name} x ${item.qty} - $${item.price * item.qty}`;
+                cartItems.appendChild(div);
+            });
+            cartTotal.innerText = total.toFixed(2);
+            cartCount.innerText = count;
+        }
+
+        function toggleCart() {
+            const cartEl = document.getElementById("cart");
+            cartEl.classList.toggle("cart-open");
+            console.log("Cart Toggled", cartEl.classList);
+        }
+        // Close when clicking outside
+        document.addEventListener("click", function (e) {
+            const cart = document.getElementById("cart");
+            const cartButton = document.querySelector(".nav-right button");
+
+        if (
+            cart.classList.contains("cart-open") &&
+            !cart.contains(e.target) &&
+            !cartButton.contains(e.target)
+        ) {
+            cart.classList.remove("cart-open");
+        }
+    });
+
+        function toggleHamburg() {
+            const hamburgEl= document.getElementById("hamburg-menu")
+            hamburgEl.classList.toggle("hamburg-open")
+            console.log("Hamburger Toggled", hamburgEl.classList)            
+        }
+
+        document.addEventListener("click", function (e) {
+            const hamburgMenu = document.getElementById("hamburg-menu")
+            const hamburgButton = document.querySelector(".hamburg-button button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+        });
+
+        function checkoutStripe() {
+            alert("Stripe checkout will be implemented next.")
+        }
+        function checkoutPayPal() {
+            alert("PayPal checkout will be implemented next.");
+        }
+        function checkoutPayNow() {
+            alert("PayNow checkout will be implemented next (e.g., QR + manual comfirmation).");
+        }
+    </script>
+
+</body>
+</html>

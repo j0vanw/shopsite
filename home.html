@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>j0vanwshopsite&trade;</title>
+    <link rel="stylesheet" href="home-styles.css" />
+    <link rel="stylesheet" href="font.css" />
+    <script type="module" src="/scripts/home.js"></script>
+</head>
+<body>
+<header>
+    <div class="top">
+        <div class="front">
+            <h3>j0vanwshopsite&trade;</h3>
+        </div>
+        <div class="center">
+            <li class="active"><a href="home.html">Home</a></li>
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+            <li><a href="/pages/shop.html">Shop</a></li>
+        </div>
+        <div class="end">
+            <div id="guestUI">
+                <li><a href="/pages/auth/login.html">Log In</a></li>
+                <li><a href="/pages/auth/signup.html">Sign Up</a></li>                
+            </div>
+
+            <div id="userUI" style="display: none;">
+                <span id="userInfo">test</span>
+                <button id="logoutBtn">Logout</button>
+            </div>
+        </div>
+    </div>
+</header>
+    <div class="hamburg-btn">
+        <li><button onclick="toggleHamburg()">&#9776;</button></li>
+    </div>
+    <main>
+        <section class="hometext">
+            <h2>Just a test shop site</h2>
+            <p>Test the website and its functions</p>
+            <img src="content/img/porsche_black_pfp.jpg" alt="porsche_black_pfp">
+
+            
+        </section>
+        
+    </main>
+    <div class="hamburg-menu" id="hamburg-menu">
+        <div class="hamburg-header">
+            <h2>Menu</h2>
+            <button class="hamburg-close" onclick="toggleHamburg()">✖</button>
+        </div>
+        <div class="hamburg-items">
+            <li><a href="/pages/about.html">About</a></li>
+            <li><a href="/pages/contact.html">Contact</a></li>
+            <li><a href="/pages/shop.html">Shop</a></li>
+        </div>
+        <div class="hamburg-auth">
+            <li><a href="/pages/auth/login.html">Log In</a></li>
+            <li><a href="/pages/auth/signup.html">Sign Up</a></li>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2026 j0vanwshopsite&trade;. All rights reserved.</p>
+    </footer>   
+    
+    <script>
+        function toggleHamburg() {
+            const hamburgEl= document.getElementById("hamburg-menu");
+            hamburgEl.classList.toggle("hamburg-open");
+            console.log("Hamburger Toggled", hamburgEl.classList);
+        }
+
+        document.addEventListener("click", function (e) {
+            const hamburgMenu = document.getElementById("hamburg-menu")
+            const hamburgButton = document.querySelector(".hamburg-btn button")
+
+        if (
+            hamburgMenu.classList.contains("hamburg-open") &&
+            !hamburgMenu.contains(e.target) &&
+            !hamburgButton.contains(e.target)
+        ) {
+            hamburgMenu.classList.remove("hamburg-open")
+        }
+        });
+    </script>
+</body>
+</html>
