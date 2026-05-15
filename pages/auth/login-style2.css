@@ -144,6 +144,7 @@ h2 {
     border: none;
     margin-bottom: 0.625rem;
     cursor: pointer;
+    margin-top: 1rem;
 }
 .google-btn img {
     width: 1.5rem; 
@@ -167,4 +168,27 @@ p a {
 }
 p a:hover {
     text-shadow: 0 0 10px lightblue;
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    color: white;
+    font-size: 0.8rem;
+}
+.divider::before,
+.divider::after {
+    content:'';
+    flex: 1;
+    border-bottom: 1px solid white;
+}
+
+.divider::before {
+    margin-right: 5px;
+}
+
+.divider::after {
+    margin-left: 5px;
 }
